@@ -53,8 +53,8 @@ sudo pacman -Syyu
 sudo pacman -S gcc
 ```
 
-> _P.S. These systems use clang by default. I'm sure there will be no problems using it._
-> Clang ++ should already be pre-installed in FreeBSD, OpenBSD, MacOS.
+> _P.S. FreeBSD, OpenBSD, MacOS use clang by default. I'm sure there will be no problems using it._
+> _Clang++ must be pre-installed on these systems._
 
 ### License
 GNU GENERAL PUBLIC LICENSE Version 3
