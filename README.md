@@ -1,6 +1,6 @@
 # **AlgoLang V-NN**
 
-#### A repository for laboratory work on algorithmic languages. Created and developed by N.N.
+## A repository for laboratory work on algorithmic languages. Created and developed by N.N.
 
 > The project is constantly developing and improving.
 > I work, create, improve, learn.
