@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/c,c++,csharp,assembler,python,java,zsh,fish,git,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
-# Edit at https://www.toptal.com/developers/gitignore?templates=c,c++,csharp,assembler,python,java,zsh,fish,git,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
+# Created by https://www.toptal.com/developers/gitignore/api/c,c++,csharp,assembler,python,java,zsh,fish,git,cmake,codeblocks,notepadpp,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
+# Edit at https://www.toptal.com/developers/gitignore?templates=c,c++,csharp,assembler,python,java,zsh,fish,git,cmake,codeblocks,notepadpp,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
 
 ### Assembler ###
 *.exe
@@ -189,6 +189,31 @@ fabric.properties
 # Azure Toolkit for IntelliJ plugin
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
+
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
+### CodeBlocks ###
+# specific to CodeBlocks IDE
+*.layout
+*.depend
+# generated directories
+bin/
+obj/
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -727,6 +752,10 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
+### NotepadPP ###
+# Notepad++ backups #
+*.bak
+
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -1240,4 +1269,4 @@ zsdoc/data
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-# End of https://www.toptal.com/developers/gitignore/api/c,c++,csharp,assembler,python,java,zsh,fish,git,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
+# End of https://www.toptal.com/developers/gitignore/api/c,c++,csharp,assembler,python,java,zsh,fish,git,cmake,codeblocks,notepadpp,visualstudio,visualstudiocode,clion,pycharm,vim,emacs,linux,macos,windows
