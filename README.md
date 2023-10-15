@@ -20,7 +20,7 @@
 ## How to use
 
 > **Folders and files**
-> Each separate folder has a different lab work / project . etc. Each file is named differently.
+> Each separate folder has a different lab work / project / etc. Each file is named differently.
 
 ```
 <month code>-<day of month>-<work code><work number>.<file type>
@@ -66,6 +66,23 @@ sudo pacman -S gcc
 
 > _P.S. FreeBSD, OpenBSD, MacOS use clang by default. I'm sure there will be no problems using it._
 > _Clang++ must be pre-installed on these systems._
+
+
+#### How to use G++ / Clang++
+
+**G++**
+
+```sh
+g++ <file name>.cpp -o <file name>.out
+./<file name>.out
+```
+
+**Clang++**
+
+```sh
+clang++ <file name>.cpp -o <file name>.out
+./<file name>.out
+```
 
 ### License
 GNU GENERAL PUBLIC LICENSE Version 3
