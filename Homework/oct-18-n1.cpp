@@ -131,7 +131,6 @@ void num_1() {
 
     }
 
-    
     long double vect_sum = 0, vect_sq = 0, vect_six = 0, vect_ksix = 0, vect_saver = 0;
 
     // сумма всех элементов массива и квадратов всех элементов массива
