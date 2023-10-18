@@ -39,7 +39,7 @@ void num_3 () {
 
     long double q, w, e;
 
-    cout << "Введите числа :";
+    cout << "Введите числа : ";
     cin >> q >> w >> e;
 
     cout << q << "  " << w << "  " << e << endl;
@@ -100,7 +100,7 @@ void num_6 () {
 
     long double a, b;
 
-    cout << "Введите a и b :";
+    cout << "Введите a и b : ";
     cin >> a >> b;
 
     cout << "x будет равен : " << (-1 * (b / a)) << endl;
