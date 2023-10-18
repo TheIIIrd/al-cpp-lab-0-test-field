@@ -14,19 +14,18 @@
 ```
 
 > The project is constantly developing and improving.
-> I work, create, improve, learn.
 > I will be glad to any advice. 
 
 ## How to use
 
-> **Folders and files**
+> **Folders and files.**
 > Each separate folder has a different lab work / project / etc. Each file is named differently.
 
 ```
 <month code>-<day of month>-<work code><work number>.<file type>
 ```
 
-> **Compiling**
+> **Compiling.**
 > Each system requires a different set of programs to build the project.
 > Please refer to the official documentation. 
 > GCC and Clang compilers were used for tests.
