@@ -131,6 +131,12 @@ void num_1() {
 
     }
 
+    // сумма всех элементов массива
+    long double vect_sum;
+
+    for (int i = 0; i <= len; ++i) vect_sum += vect_num[i];
+    
+    cout << "Сумма всех элементов массива равна " << vect_sum << endl;
 
     return;
 }
