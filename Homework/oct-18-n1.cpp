@@ -340,14 +340,50 @@ void num_5() {
 
 // Даны названия трех городов. Запишите в the_longest самое длинное, а самое короткое название в the_shortest.
 void num_6() {
+
+    string mas_sity[3];
+    cout << "Введите название 3-х городов через пробел : ";
+    cin >> mas_sity[0] >> mas_sity[1] >> mas_sity[2];
+
+    string the_longest = mas_sity[0], the_shortest = mas_sity[0];
+
+    for (size_t i = 1; i < 3; ++i) {
+
+        if (the_longest.length() < mas_sity[i].length()) {
+            the_longest = mas_sity[i];
+            
+        }
+
+        else if (the_shortest.length() > mas_sity[i].length()) {
+            the_shortest = mas_sity[i];
+            
+        }
+    }
+
+    cout << "[+] Самое длинное название : " << the_longest << endl;
+    cout << "[+] Самое короткое название : " << the_shortest << endl;
+
     return;
 }
 
+
 // Дано слово. Добавить к нему в начале и конце столько звездочек, сколько букв в этом слове.
+void num_7() {
+    return;
+}
+
 
 // Дано предложение. Определить долю (в %) букв 'a' в нем.
+void num_8() {
+    return;
+}
+
 
 // Дано предложение "Can you can a can as a canner can can a can?". Заменить все слова can на слово new_word.s
+void num_9() {
+    return;
+}
+
 
 // Выбор номера
 int main () {
@@ -370,6 +406,12 @@ int main () {
         case 5: num_5(); return 0;
 
         case 6: num_6(); return 0;
+
+        case 7: num_6(); return 0;
+
+        case 8: num_6(); return 0;
+
+        case 9: num_6(); return 0;
 
         default: 
             cout << "Задачи, под номером " << task_num << " не существует" << endl;
