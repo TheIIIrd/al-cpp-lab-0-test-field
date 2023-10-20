@@ -3,6 +3,7 @@
 */
 
 
+#include <cstddef>
 #include <iostream>
 #include <cstdlib>
 #include <string>
@@ -17,6 +18,8 @@ int GetRandomNumber(int min, int max) {
     return num;
 }
 
+
+// Генерация массива
 vector<long int> VectGen() {
 
     string ans;
@@ -25,7 +28,7 @@ vector<long int> VectGen() {
     cin.ignore();
     getline(cin, ans);
 
-    int len;
+    size_t len;
     vector<long int> vect_num;
 
     if ((ans == "") || (ans[0] == 'y') || (ans[0] == 'Y') || (ans == "Yes") || (ans == "yes")) {
@@ -340,6 +343,11 @@ void num_6() {
     return;
 }
 
+// Дано слово. Добавить к нему в начале и конце столько звездочек, сколько букв в этом слове.
+
+// Дано предложение. Определить долю (в %) букв 'a' в нем.
+
+// Дано предложение "Can you can a can as a canner can can a can?". Заменить все слова can на слово new_word.s
 
 // Выбор номера
 int main () {
