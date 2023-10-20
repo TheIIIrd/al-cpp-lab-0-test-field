@@ -100,7 +100,7 @@ void num_1() {
 
     // Увеличить в 2 раза
     cout << "[+] Массив увеличен в 2 раза :" << endl;
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) * 2;
         cout << vect_num.at(i) << ' ';
@@ -113,7 +113,7 @@ void num_1() {
     cin >> a;
 
     cout << "[+] Массив уменьшен на " << a << " :" << endl;
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) - a;
         cout << vect_num.at(i) << ' ';
@@ -126,7 +126,7 @@ void num_1() {
         cout << endl << "[+] Массив поделен на " << vect_num[0] << " :" << endl;
         long double first_vect_num = vect_num[0];
 
-        for (size_t i = 0; i <= len; ++i) {
+        for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) / first_vect_num;
         cout << vect_num.at(i) << ' ';
@@ -146,7 +146,7 @@ void num_1() {
     long double vect_sum = 0, vect_sq = 0, vect_six = 0, vect_ksix = 0, vect_saver = 0;
 
     // Сумма всех элементов массива и квадратов всех элементов массива
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
         vect_sum += vect_num.at(i);
         vect_sq += (vect_num.at(i) * vect_num.at(i));
 
@@ -415,17 +415,36 @@ void num_8() {
 void num_9() {
 
     string sentence = "Can you can a can as a canner can can a can?";
-    string new_word;
+    string new_word, letters, str_none = "";
+
+    string words_can[] = {"Can", "can"};
+    char symbols[] = {',', '.', ':', ';', '!', '?' ,' '};
 
     cout << "Введите слово : ";
     cin >> new_word;
 
-    // for (size_t i = 1; i < sentence.length() - 2; ++i) {
-    //     if ((sentence[i - 1] == 'C' || sentence[i - 1] == 'c') && (sentence[i] == 'a') && (sentence[i + 1] == 'n') &&
-    //     (sentence[i + 2] == ' ' || sentence[i + 2] == '?')) {
+    bool flag = true;
 
-    //     }
-    // }
+    for (size_t i = 0; i < sentence.length() - 3; ++i) {
+
+        letters = str_none + sentence[i] + sentence[i + 1] + sentence[i + 2] + sentence[i + 3];
+        
+        if (flag == true) {
+            for (size_t j = 0; j < 2; ++j) {
+                for (size_t k = 0; k < 7; ++k) {
+                    if (letters == (str_none + words_can[j] + symbols[k])) {
+                        cout << letters << " " << words_can[j] + symbols[k] << endl;
+
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag == false) break;
+            }
+        }
+
+        flag = true;
+    }
 
     return;
 }
