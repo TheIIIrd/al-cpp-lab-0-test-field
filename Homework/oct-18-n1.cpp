@@ -41,7 +41,7 @@ vector<long int> VectGen() {
         for (int i = 0; i < len; ++i) {
 
             vect_num.push_back(GetRandomNumber(-100, 100));
-            cout << vect_num[i] << ' ';
+            cout << vect_num.at(i) << ' ';
 
         }
 
@@ -103,8 +103,8 @@ void num_1() {
     cout << "[+] Массив увеличен в 2 раза :" << endl;
     for (size_t i = 0; i <= len; ++i) {
 
-        vect_num[i] = vect_num[i] * 2;
-        cout << vect_num[i] << ' ';
+        vect_num.at(i) = vect_num.at(i) * 2;
+        cout << vect_num.at(i) << ' ';
 
     }
 
@@ -116,8 +116,8 @@ void num_1() {
     cout << "[+] Массив уменьшен на " << a << " :" << endl;
     for (size_t i = 0; i <= len; ++i) {
 
-        vect_num[i] = vect_num[i] - a;
-        cout << vect_num[i] << ' ';
+        vect_num.at(i) = vect_num.at(i) - a;
+        cout << vect_num.at(i) << ' ';
 
     }
 
@@ -129,8 +129,8 @@ void num_1() {
 
         for (size_t i = 0; i <= len; ++i) {
 
-        vect_num[i] = vect_num[i] / first_vect_num;
-        cout << vect_num[i] << ' ';
+        vect_num.at(i) = vect_num.at(i) / first_vect_num;
+        cout << vect_num.at(i) << ' ';
 
         }
 
@@ -148,8 +148,8 @@ void num_1() {
 
     // Сумма всех элементов массива и квадратов всех элементов массива
     for (size_t i = 0; i <= len; ++i) {
-        vect_sum += vect_num[i];
-        vect_sq += (vect_num[i] * vect_num[i]);
+        vect_sum += vect_num.at(i);
+        vect_sq += (vect_num.at(i) * vect_num.at(i));
 
     }
     
@@ -159,7 +159,7 @@ void num_1() {
     // Сумма шести первых элементов массива
     if (len >= 6) {
         for (size_t i = 0; i <= 6; ++i) {
-            vect_six += vect_num[i];
+            vect_six += vect_num.at(i);
         }
         cout << "[+] Сумма шести первых элементов массива : " << vect_six << endl;
     }
@@ -174,7 +174,7 @@ void num_1() {
     if ((k1 > k2) && (k1 <= len) && (k2 <= len) && (k1 >= 0) && (k2 >= 0)) {
         for (int i = k2; i <= k1; ++i) {
 
-            vect_ksix += vect_num[i];
+            vect_ksix += vect_num.at(i);
 
         }
         cout << "[+] Сумма элементов массива от " << k2 << " до " << k1 << " : " << vect_ksix << endl;
@@ -183,7 +183,7 @@ void num_1() {
     else if ((k1 <= len) && (k2 <= len) && (k1 >= 0) && (k2 >= 0)) {
         for (int i = k1; i <= k2; ++i) {
 
-            vect_ksix += vect_num[i];
+            vect_ksix += vect_num.at(i);
 
         }
         cout << "[+] Сумма элементов массива от " << k1 << " до " << k2 << " : " << vect_ksix << endl;
@@ -202,7 +202,7 @@ void num_1() {
     if ((s1 > s2) && (s1 <= len) && (s2 <= len) && (s1 >= 0) && (s2 >= 0)) {
         for (int i = s2; i <= s1; ++i) {
 
-            vect_saver += vect_num[i];
+            vect_saver += vect_num.at(i);
 
         }
         cout << "[+] Среднее арифметическое элементов массива от " << s2 << " до " << s1 << " : ";
@@ -212,7 +212,7 @@ void num_1() {
     else if ((s1 <= len) && (s2 <= len) && (s1 >= 0) && (s2 >= 0)) {
         for (int i = s1; i <= s2; ++i) {
 
-            vect_saver += vect_num[i];
+            vect_saver += vect_num.at(i);
 
         }
         cout << "[+] Среднее арифметическое элементов массива от " << s1 << " до " << s2 << " : ";
@@ -240,8 +240,8 @@ void num_2() {
     
     for (size_t i = 0; i < 3; ++i) {
 
-        vnum = vect_num[i];
-        vect_num[i] = vect_num[len - 3 + i];
+        vnum = vect_num.at(i);
+        vect_num.at(i) = vect_num[len - 3 + i];
         vect_num[len - 3 + i] = vnum;
 
     }
@@ -249,7 +249,7 @@ void num_2() {
     cout << "Масиив с переставленными элементами равен : " << endl;
 
     for (size_t i = 0; i < len; ++i) {
-        cout << vect_num[i] << " ";
+        cout << vect_num.at(i) << " ";
     }
 
     cout << endl;
@@ -274,9 +274,9 @@ void num_3() {
 
     for (size_t i = 0; i < len; ++i) {
 
-        if (vect_num[i] % 2 == 0) even_num = i;
+        if (vect_num.at(i) % 2 == 0) even_num = i;
 
-        else if ((vect_num[i] < 0) && (neg_num == -1)) neg_num = i;
+        else if ((vect_num.at(i) < 0) && (neg_num == -1)) neg_num = i;
     }
 
     if (even_num != -1) {
@@ -293,7 +293,7 @@ void num_3() {
 
     len = vect_num.size();
     for (size_t i = 0; i < len; ++i) {
-        cout << vect_num[i] << " ";
+        cout << vect_num.at(i) << " ";
     }
 
     cout << endl;
