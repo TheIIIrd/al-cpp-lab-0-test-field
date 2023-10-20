@@ -369,6 +369,17 @@ void num_6() {
 
 // Дано слово. Добавить к нему в начале и конце столько звездочек, сколько букв в этом слове.
 void num_7() {
+
+    cout << "Введите слово : ";
+    string word;
+    cin >> word;
+
+    size_t len = word.length();
+
+    for (size_t i = 0; i < len; ++i) word = "*" + word + "*";
+
+    cout << "Слово, длиной " << len << " преобразовано : " << word << endl;
+
     return;
 }
 
@@ -407,11 +418,11 @@ int main () {
 
         case 6: num_6(); return 0;
 
-        case 7: num_6(); return 0;
+        case 7: num_7(); return 0;
 
-        case 8: num_6(); return 0;
+        case 8: num_8(); return 0;
 
-        case 9: num_6(); return 0;
+        case 9: num_9(); return 0;
 
         default: 
             cout << "Задачи, под номером " << task_num << " не существует" << endl;
