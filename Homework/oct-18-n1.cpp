@@ -305,8 +305,9 @@ void num_3() {
 // Дано название города. Определить, четно или нет количество символов в нем.
 void num_4() {
 
-    cout << "Введите название города : ";
     string city;
+
+    cout << "Введите название города : ";
     cin >> city;
 
     size_t len = city.length();
@@ -323,12 +324,12 @@ void num_4() {
 // Даны две фамилии. Верните true, если первая длинее.
 void num_5() {
 
+    string sn_igor, sn_ksy;
+
     cout << "Введите фамилию Игоря : ";
-    string sn_igor;
     cin >> sn_igor;
 
     cout << "Введите фамилию Ксюши : ";
-    string sn_ksy;
     cin >> sn_ksy;
 
     if (sn_igor.length() > sn_ksy.length()) cout << "[+] Ответ : true" << endl;
@@ -341,7 +342,8 @@ void num_5() {
 // Даны названия трех городов. Запишите в the_longest самое длинное, а самое короткое название в the_shortest.
 void num_6() {
 
-    string mas_sity[3];
+    string mas_sity[3];string word;
+
     cout << "Введите название 3-х городов через пробел : ";
     cin >> mas_sity[0] >> mas_sity[1] >> mas_sity[2];
 
@@ -370,8 +372,9 @@ void num_6() {
 // Дано слово. Добавить к нему в начале и конце столько звездочек, сколько букв в этом слове.
 void num_7() {
 
-    cout << "Введите слово : ";
     string word;
+
+    cout << "Введите слово : ";
     cin >> word;
 
     size_t len = word.length();
@@ -386,12 +389,45 @@ void num_7() {
 
 // Дано предложение. Определить долю (в %) букв 'a' в нем.
 void num_8() {
+
+    string sentence;
+    long double count_a = 0, count_space = 0;
+
+    cout << "Введите предложение : ";
+
+    cin.ignore();
+    getline(cin, sentence);
+
+    long double len = sentence.length();
+
+    for (size_t i = 0; i < len; ++i) {
+        if (sentence[i] == 'a' || sentence[i] == 'A') count_a += 1;
+        else if (sentence[i] == ' ') count_space += 1;
+    }
+
+    cout << "[+] Доля букв a в нем (с учетом пробелов): " << (count_a / len) * 100 << " %" << endl;
+    cout << "[+] Доля букв a в нем (без учета пробелов): " << (count_a / (len - count_space)) * 100 << " %" << endl;
+
     return;
 }
 
 
 // Дано предложение "Can you can a can as a canner can can a can?". Заменить все слова can на слово new_word.s
 void num_9() {
+
+    string sentence = "Can you can a can as a canner can can a can?";
+    string new_word;
+
+    cout << "Введите слово : ";
+    cin >> new_word;
+
+    // for (size_t i = 1; i < sentence.length() - 2; ++i) {
+    //     if ((sentence[i - 1] == 'C' || sentence[i - 1] == 'c') && (sentence[i] == 'a') && (sentence[i + 1] == 'n') &&
+    //     (sentence[i + 2] == ' ' || sentence[i + 2] == '?')) {
+
+    //     }
+    // }
+
     return;
 }
 
