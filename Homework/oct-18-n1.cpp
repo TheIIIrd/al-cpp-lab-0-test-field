@@ -100,7 +100,7 @@ void num_1() {
 
     // Увеличить в 2 раза
     cout << "[+] Массив увеличен в 2 раза :" << endl;
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) * 2;
         cout << vect_num.at(i) << ' ';
@@ -113,7 +113,7 @@ void num_1() {
     cin >> a;
 
     cout << "[+] Массив уменьшен на " << a << " :" << endl;
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) - a;
         cout << vect_num.at(i) << ' ';
@@ -126,7 +126,7 @@ void num_1() {
         cout << endl << "[+] Массив поделен на " << vect_num[0] << " :" << endl;
         long double first_vect_num = vect_num[0];
 
-        for (size_t i = 0; i <= len; ++i) {
+        for (size_t i = 0; i < len; ++i) {
 
         vect_num.at(i) = vect_num.at(i) / first_vect_num;
         cout << vect_num.at(i) << ' ';
@@ -146,7 +146,7 @@ void num_1() {
     long double vect_sum = 0, vect_sq = 0, vect_six = 0, vect_ksix = 0, vect_saver = 0;
 
     // Сумма всех элементов массива и квадратов всех элементов массива
-    for (size_t i = 0; i <= len; ++i) {
+    for (size_t i = 0; i < len; ++i) {
         vect_sum += vect_num.at(i);
         vect_sq += (vect_num.at(i) * vect_num.at(i));
 
