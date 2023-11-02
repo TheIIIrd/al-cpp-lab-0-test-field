@@ -2,6 +2,10 @@
 
 ## A repository for laboratory work on algorithmic languages. Created and developed by N.N.
 
+<p align="center">
+<img alt="Links purple banner" src="Artwork/Links-banner-lightpurple-by-sibistel-and-theiiird.png"/>
+</p>
+
 ```
  (`-')  _                                         (`-')  _ <-. (`-')_
  (OO ).-/    <-.       .->        .->      <-.    (OO ).-/    \( OO) )    .->
