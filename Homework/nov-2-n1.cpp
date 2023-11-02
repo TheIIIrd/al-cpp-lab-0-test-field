@@ -24,9 +24,14 @@ class IntelliCalc {
 };
 
 long double IntelliCalc::Counter(string simple_math){
-    size_t len = simple_math.length();
 
-    
+    size_t len = simple_math.length();
+    vector<string> actions_math;
+
+    // разбираем пример на числа "0123456789" и действия "+-*/^!"
+    for (size_t i = 0; i < len; ++i) {
+        
+    }
 
     return 0;
 }
