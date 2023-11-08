@@ -3,7 +3,7 @@
 */
 
 
-#include <cstddef>
+#include <cmath>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,6 +14,8 @@ using namespace std;
 class IntelliCalc {
     public:
 
+    string BracketCrusher(string);
+    long double MathWhiz(long double, char, long double);
     long double Counter(string);
 
     IntelliCalc();
@@ -23,15 +25,26 @@ class IntelliCalc {
     string math_extract;
 };
 
-long double IntelliCalc::Counter(string simple_math){
+// ищем скобки
+string IntelliCalc::BracketCrusher(string math_extract) {
 
-    size_t len = simple_math.length();
-    vector<string> actions_math;
+    // magic
 
-    // разбираем пример на числа "0123456789" и действия "+-*/^!"
-    for (size_t i = 0; i < len; ++i) {
-        
-    }
+    return "";
+}
+
+// считаем
+long double IntelliCalc::MathWhiz(long double first_num, char action, long double second_num) {
+
+    // magic
+
+    return 0;
+}
+
+// выставляем приоритеты
+long double IntelliCalc::Counter(string simple_math) {
+
+    // magic
 
     return 0;
 }
