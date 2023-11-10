@@ -127,7 +127,7 @@ Matrix Mult(const Matrix& a, const Matrix& b) {
         for (size_t i = 0; i < matrix_res.n_; ++i) {
             for (size_t j = 0; j < matrix_res.m_; ++j) {
                 for (size_t k = 0; k < a.n_; ++k) {
-                    matrix_res.data_[i][j] = a.data_[i][k] * b.data_[k][j];
+                    matrix_res.data_[i][j] += a.data_[i][k] * b.data_[k][j];
                 }
             }
         }
