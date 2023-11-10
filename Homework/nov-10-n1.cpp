@@ -69,6 +69,7 @@ Matrix Copy(const Matrix& matrix) {
     return matrix_copy;
 }
 
+
 // Возвращает сумму двух матриц.
 // Если операция невозможна - вернуть пустую матрицу
 // Matrix Add(const Matrix& a, const Matrix& b);
@@ -114,6 +115,7 @@ Matrix Sub(const Matrix& a, const Matrix& b) {
     return Matrix();
 }
 
+
 // Возвращает произведение двух матриц.
 // Если операция невозможна - вернуть пустую матрицу
 // Matrix Mult(const Matrix& a, const Matrix& b);
@@ -156,16 +158,9 @@ void Transposition(Matrix& matrix) {
 
     matrix = matrix_res;
 
-    // Construct(matrix, matrix.n_, matrix.m_);
-
-    // for (size_t i = 0; i < matrix_res.n_; ++i) {
-    //     for (size_t j = 0; j < matrix_res.m_; ++j) {
-    //         matrix.data_[i][j] = matrix_res.data_[i][j];
-    //     }
-    // }
-
     Destruct(matrix_res);
 }
+
 
 // Сравнение двух матриц.
 // bool operator==(const Matrix& a, const Matrix& b);
