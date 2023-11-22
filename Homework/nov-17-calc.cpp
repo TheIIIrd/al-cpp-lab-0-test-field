@@ -44,6 +44,7 @@ int IntelliCalc::PriorityProtocol(char action) {
     return -1;
 }
 
+
 // основная функция для подсчета значений
 bool IntelliCalc::MathWhiz() {
 
