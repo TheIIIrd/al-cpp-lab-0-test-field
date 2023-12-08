@@ -1,230 +1,270 @@
-/*
-Лабораторная Работа "Калькулятор"
-*/
-
-#include <cstddef>
+#include <cmath>
 #include <iostream>
+#include <sstream>
 #include <stack>
+#include <string>
 
 using namespace std;
 
-class IntelliCalc {
-public:
-  long double CounIt();
+const double Pie = acos(-1); // число Пи
+const double E = exp(1);     // число E
 
-  IntelliCalc();
-  ~IntelliCalc();
+// Обработка выражений с унарными минусами после скобок
+string UnaryMinus(string line) {
+  int pos = 0, len = line.length() - 1;
 
-private:
-  struct Price {
-    // тип данных num, +, -, *, /, ^
-    char type;
-    // само число или 0.0 если действие
-    long double value;
-  };
+  string zero = "0";
+  string bracket_minus = "(-";
 
-  stack<Price> stack_num;
-  stack<Price> stack_action;
-  Price item;
+  for (int i = 0; i < len; ++i) {
+    pos = i + 1;
 
-  int PriorityProtocol(char);
-  bool MathWhiz();
-};
+    if (line[i] == bracket_minus[0] && line[pos] == bracket_minus[1]) {
+      line.insert(pos, zero);
+    }
+  }
 
-// получение приоритета
-int IntelliCalc::PriorityProtocol(char action) {
-
-  if (action == '+' || action == '-')
-    return 0;
-  else if (action == '*' || action == '/')
-    return 1;
-
-  return -1;
+  return line;
 }
 
-// основная функция для подсчета значений
-bool IntelliCalc::MathWhiz() {
+struct Price {
+  // тип данных num, +, -, *, /, ^
+  char type;
+  // само число или 0.0 если действие
+  long double value;
+};
 
-  // определяем пару чисел
-  long double num_one, num_two;
-  Price item;
-
-  // получение 1-го числа
+bool Math(stack<Price> &stack_num, stack<Price> &stack_action, Price &item) {
+  // num_one присваивается значение верхнего числа из стека с числами
+  double num_one, num_two;
   num_one = stack_num.top().value;
-  stack_num.pop();
 
-  // выбор операции
+  stack_num.pop(); // Удаляется верхнее число из стека с числами
+
   switch (stack_action.top().type) {
 
   case '+': {
-
-    // получение 2-го числа
     num_two = stack_num.top().value;
-
-    item.type = 'n';
-    item.value = num_one + num_two;
-
-    // замена чисел операции на ответ
     stack_num.pop();
-    stack_num.push(item);
 
+    item.type = '0';
+    item.value = num_one + num_two;
+    stack_num.push(item); // Результат операции кладется в стек с числами
     stack_action.pop();
+
     break;
   }
 
   case '-': {
-
-    // получение 2-го числа
     num_two = stack_num.top().value;
-
-    item.type = 'n';
-    item.value = num_two - num_one;
-
-    // замена чисел операции на ответ
     stack_num.pop();
-    stack_num.push(item);
 
+    item.type = '0';
+    item.value = num_two - num_one;
+    stack_num.push(item);
     stack_action.pop();
+
+    break;
+  }
+
+  case '^': {
+    num_two = stack_num.top().value;
+    stack_num.pop();
+
+    item.type = '0';
+    item.value = pow(num_two, num_one);
+    stack_num.push(item);
+    stack_action.pop();
+
     break;
   }
 
   case '*': {
-
-    // получение 2-го числа
     num_two = stack_num.top().value;
-
-    item.type = 'n';
-    item.value = num_one * num_two;
-
-    // замена чисел операции на ответ
     stack_num.pop();
-    stack_num.push(item);
 
+    item.type = '0';
+    item.value = num_one * num_two;
+    stack_num.push(item);
     stack_action.pop();
+
     break;
   }
 
   case '/': {
-
-    // получение 2-го числа
     num_two = stack_num.top().value;
+    if (num_one == 0) {
+      cerr << "[-] err" << endl;
 
-    item.type = 'n';
-    item.value = num_two / num_one;
+      return false;
 
-    // замена чисел операции на ответ
-    stack_num.pop();
-    stack_num.push(item);
+    } else {
+      stack_num.pop();
 
-    stack_action.pop();
-    break;
+      item.type = '0';
+      item.value = num_two / num_one;
+      stack_num.push(item);
+      stack_action.pop();
+
+      break;
+    }
   }
 
-  // вывод ошибки, если ничего не подходит
-  default:
+  default: {
+    cerr << endl << "[-] err" << endl;
+
     return false;
+    break;
+  }
   }
 
   return true;
 }
 
-// обработка строки
-long double IntelliCalc::CounIt() {
-  // переменная для анализа введенной строки
-  char commod;
+int getRang(char element) { // Приоритет операции
+  if (element == '+' || element == '-')
+    return 1;
+  if (element == '*' || element == '/')
+    return 2;
+  if (element == '^')
+    return 3;
+  else
+    return 0;
+}
 
-  do {
+int main() {
+  while (true) {
 
-    // просматриваем первый элемент введенной строки
-    commod = cin.peek();
+    cout << "[*] math : ";
 
-    // если цифра
-    if (commod >= '0' && commod <= '9') {
+    string str;
+    getline(cin, str);
+    str = UnaryMinus(str);
+    stringstream expression{str};
 
-      // забираем число целиком
-      cin >> item.value;
-      // n - num
-      item.type = 'n';
+    char element; // текущий символ
+    double value;
+    bool minus = true; // унарный минус в начале строки
 
-      // складываем в стек с числами
-      stack_num.push(item);
+    stack<Price> stack_num;    // Стек с числами
+    stack<Price> stack_action; // Стек с операциями
 
-      continue;
-    }
+    Price item;
 
-    // если операция
-    else if (commod == '+' || commod == '-' || commod == '*' || commod == '/') {
+    while (true) {
+      element = expression.peek();
+      if (element == '\377')
+        break; // Восьмеричная Escape последовательность  - конец строки
 
-      if (stack_action.size() == 0) {
-
-        // забираем тип операции
-        item.type = commod;
-        // 0.0 т.к. это не число
-        item.value = 0.0;
-
-        // складываем в стек с операциями
-        stack_action.push(item);
-        cin.ignore();
-
-      }
-
-      else {
-
-        if (PriorityProtocol(commod) >
-            PriorityProtocol(stack_action.top().type)) {
-
-          // забираем тип операции
-          item.type = commod;
-          // 0.0 т.к. это не число
-          item.value = 0.0;
-
-          // складываем в стек с операциями
-          stack_action.push(item);
-          cin.ignore();
-
-        }
-
-        else if (MathWhiz() == false) {
-
-          cerr << endl << "Err" << endl;
-          return 0;
-        }
+      if (element == ' ') { // Игнорирование пробелов
+        expression.ignore();
 
         continue;
       }
 
-      continue;
+      if (element == 'p') { // число Пи
+        item.type = '0';
+        item.value = Pie;
+        stack_num.push(item); // Число кладется в стек с числами
+        minus = 0;
+        expression.ignore();
+
+        continue;
+      }
+
+      if (element == 'e') { // число E
+        item.type = '0';
+        item.value = E;
+        stack_num.push(item);
+        minus = 0;
+        expression.ignore();
+
+        continue;
+      }
+
+      if (element >= '0' && element <= '9' ||
+          element == '-' && minus == 1) { // Прочитано число
+        expression >> value;
+        item.type = '0';
+        item.value = value;
+        stack_num.push(item);
+        minus = 0;
+
+        continue;
+      }
+
+      // Прочитана операция
+      if (element == '+' || element == '-' && minus == 0 || element == '*' ||
+          element == '/' || element == '^') {
+        if (stack_action.size() == 0) { // Если стек с операциями пуст
+          item.type = element;
+          item.value = 0;
+          stack_action.push(item); // Операция кладется в стек с операциями
+          expression.ignore();
+
+          continue;
+        }
+
+        // Если стек с операциями НЕ пуст, но приоритет текущей операции выше
+        // верхней в стеке с операциями
+        if (stack_action.size() != 0 &&
+            getRang(element) > getRang(stack_action.top().type)) {
+          item.type = element;
+          item.value = 0;
+          stack_action.push(item);
+          expression.ignore();
+
+          continue;
+        }
+
+        // Если стек с операциями НЕ пуст, и приоритет текущей операции ниже или
+        // равен верхней в стеке с операциями
+        if (stack_action.size() != 0 &&
+            getRang(element) <= getRang(stack_action.top().type)) {
+          if (Math(stack_num, stack_action, item) == false) {
+
+            return 0;
+          }
+          continue;
+        }
+      }
+
+      if (element == '(') { // Открывающаяся скобка
+        item.type = element;
+        item.value = 0;
+        stack_action.push(item);
+        expression.ignore();
+        continue;
+      }
+
+      if (element == ')') { // закрывающаяся скобка
+        while (stack_action.top().type != '(') {
+          if (Math(stack_num, stack_action, item) == false) {
+
+            return 0;
+          } else
+            continue;
+        }
+        stack_action.pop();
+        expression.ignore();
+        continue;
+      } else { // введен посторонний символ
+        cout << endl << "[-] wrong math" << endl;
+
+        return 0;
+      }
     }
-  }
 
-  // пока не получим в строке Enter
-  while (commod != '\n');
+    while (stack_action.size() != 0) {
+      if (Math(stack_num, stack_action, item) == false) {
 
-  while (stack_action.size() != 0) {
-
-    // если основная функция для подсчета значений отработала без ошибок
-    if (MathWhiz())
-      continue;
-
-    // если произошла ошибка
-    else {
-
-      cerr << endl << "Err" << endl;
-      return 0;
+        return 0;
+      } else
+        continue;
     }
+
+    std::cout << "[+] ans : " << stack_num.top().value << endl;
   }
-
-  return stack_num.top().value;
-}
-
-IntelliCalc::IntelliCalc() {}
-
-IntelliCalc::~IntelliCalc() {}
-
-int main() {
-
-  // magic
-  cout << IntelliCalc().CounIt() << endl;
 
   return 0;
 }
