@@ -1,4 +1,4 @@
-# **AlgoLang V-NN**
+# **AlgoLang V-NN-0**
 
 ## A repository for laboratory work on algorithmic languages. Created and developed by N.N.
 
